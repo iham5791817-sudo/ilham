@@ -14,7 +14,7 @@
 }
 
 body{
-    background:#f4f7fa;
+    background: linear-gradient(135deg, #e0f2fe, #f8fafc);
     color:#333;
     line-height:1.6;
 }
@@ -53,29 +53,41 @@ header p{
 .card{
     background:white;
     padding:30px;
-    border-radius:15px;
+    border-radius:18px;
     margin-bottom:25px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.12);
 }
 
 h2{
     color:#0f172a;
     margin-bottom:15px;
-    border-left:5px solid #2563eb;
+    border-left:5px solid #3b82f6;
     padding-left:10px;
 }
 
 .skills-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
 }
 
 .skill-box{
-    background:#f8fafc;
+    background:#f1f5f9;
     padding:20px;
-    border-radius:10px;
-    border:1px solid #ddd;
+    border-radius:12px;
+    border:1px solid #e2e8f0;
+    transition:0.3s;
+}
+
+.skill-box:hover{
+    background:#e0f2fe;
+    transform: scale(1.03);
 }
 
 .skill-box h3{
@@ -105,13 +117,9 @@ footer{
 <body>
 
 <header>
-
-    <!-- Ganti nama file sesuai foto yang diupload -->
     <img src="foto-ilham.jpg" alt="Ilham Maulana" class="profile-img">
-
     <h1>Ilham Maulana</h1>
-    <p>Student of SMK Wikrama Bogor | Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</p>
-
+    <p>SMK Wikrama Bogor | TJKT (Teknik Jaringan Komputer dan Telekomunikasi)</p>
 </header>
 
 <div class="container">
@@ -120,29 +128,22 @@ footer{
         <h2>Tentang Saya</h2>
 
         <p>
-            Halo, saya <strong>Ilham Maulana</strong>, siswa SMK Wikrama Bogor
-            jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT).
-            Saya memiliki minat yang tinggi dalam bidang jaringan komputer,
-            administrasi server Linux, cloud computing, serta monitoring sistem.
+            Halo, saya <strong>Ilham Maulana</strong>, siswa SMK Wikrama Bogor jurusan TJKT.
+            Saat ini saya sedang belajar tentang jaringan komputer, Linux, cloud computing, dan sistem monitoring.
         </p>
 
         <br>
 
         <p>
-            Saya terbiasa mempelajari dan mengimplementasikan konfigurasi jaringan,
-            manajemen server, serta layanan cloud untuk mendukung kebutuhan
-            infrastruktur teknologi informasi. Saat ini saya sedang mencari
-            kesempatan Praktik Kerja Lapangan (PKL) untuk mengembangkan
-            keterampilan teknis, menambah pengalaman industri, dan berkontribusi
-            dalam lingkungan kerja profesional.
+            Saya juga sering mempelajari dan mencoba praktik seperti konfigurasi jaringan,
+            penggunaan server Linux, serta dasar cloud computing untuk menambah pengalaman.
         </p>
 
         <br>
 
         <p>
-            Saya memiliki semangat belajar yang tinggi, mampu bekerja secara tim
-            maupun individu, serta selalu berusaha memberikan hasil terbaik dalam
-            setiap tugas dan proyek yang dikerjakan.
+            Saya pribadi senang belajar hal baru, bisa bekerja sama dengan tim,
+            dan berusaha menyelesaikan tugas dengan baik sesuai kemampuan saya.
         </p>
     </section>
 
@@ -154,44 +155,41 @@ footer{
             <div class="skill-box">
                 <h3>Networking</h3>
                 <ul>
-                    <li>TCP/IP</li>
-                    <li>MikroTik Configuration</li>
-                    <li>Routing & Switching</li>
+                    <li>TCP/IP dasar</li>
+                    <li>MikroTik dasar</li>
                     <li>Subnetting</li>
-                    <li>Network Troubleshooting</li>
+                    <li>Routing & Switching</li>
+                    <li>Troubleshooting jaringan</li>
                 </ul>
             </div>
 
             <div class="skill-box">
                 <h3>Linux Server</h3>
                 <ul>
-                    <li>Debian Linux</li>
+                    <li>Debian Linux dasar</li>
                     <li>SSH</li>
                     <li>Apache Web Server</li>
-                    <li>User Management</li>
-                    <li>Basic Shell Command</li>
+                    <li>User management</li>
+                    <li>Command line dasar</li>
                 </ul>
             </div>
 
             <div class="skill-box">
                 <h3>Cloud Computing</h3>
                 <ul>
-                    <li>AWS EC2</li>
-                    <li>AWS VPC</li>
-                    <li>Security Group</li>
-                    <li>Route Table</li>
-                    <li>Basic Cloud Deployment</li>
+                    <li>AWS EC2 dasar</li>
+                    <li>VPC & Security Group</li>
+                    <li>Basic deployment</li>
                 </ul>
             </div>
 
             <div class="skill-box">
-                <h3>Monitoring System</h3>
+                <h3>Monitoring</h3>
                 <ul>
-                    <li>Nagios Core</li>
-                    <li>Host Monitoring</li>
-                    <li>Service Monitoring</li>
-                    <li>Network Monitoring</li>
-                    <li>Alerting & Notification</li>
+                    <li>Nagios Core dasar</li>
+                    <li>Monitoring server</li>
+                    <li>Monitoring service</li>
+                    <li>Alerting dasar</li>
                 </ul>
             </div>
 
@@ -201,26 +199,56 @@ footer{
     <section class="card">
         <h2>Tools & Software</h2>
 
-        <ul>
-            <li>Winbox</li>
-            <li>PuTTY</li>
-            <li>VirtualBox</li>
-            <li>Nagios Core</li>
-            <li>Cisco Packet Tracer</li>
-            <li>Git & GitHub</li>
-            <li>Visual Studio Code</li>
-        </ul>
+        <div class="skills-grid">
+
+            <div class="skill-box">
+                <h3>Networking Tools</h3>
+                <ul>
+                    <li>MikroTik Winbox</li>
+                    <li>Cisco Packet Tracer</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <h3>Server Tools</h3>
+                <ul>
+                    <li>PuTTY</li>
+                    <li>VirtualBox</li>
+                    <li>Linux Debian</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <h3>Development</h3>
+                <ul>
+                    <li>Visual Studio Code</li>
+                    <li>Git & GitHub</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <h3>Monitoring</h3>
+                <ul>
+                    <li>Nagios Core</li>
+                </ul>
+            </div>
+
+        </div>
     </section>
 
     <section class="card">
         <h2>Tujuan PKL</h2>
 
         <p>
-            Melalui kegiatan Praktik Kerja Lapangan (PKL), saya ingin memperoleh
-            pengalaman kerja nyata di bidang jaringan komputer, administrasi server,
-            cloud computing, dan monitoring sistem. Saya berharap dapat mengembangkan
-            kemampuan teknis, meningkatkan profesionalisme, serta memahami proses
-            kerja yang diterapkan di dunia industri teknologi informasi.
+            PKL ini saya lakukan untuk menambah pengalaman kerja secara langsung,
+            mengenal dunia industri, dan belajar bagaimana pekerjaan di bidang IT dilakukan.
+        </p>
+
+        <br>
+
+        <p>
+            Saya berharap bisa mendapatkan pengalaman baru, meningkatkan kemampuan,
+            serta lebih siap untuk dunia kerja setelah lulus sekolah.
         </p>
     </section>
 
@@ -246,7 +274,7 @@ footer{
 </div>
 
 <footer>
-    <p>© 2025 Ilham Maulana | Portfolio PKL TJKT SMK Wikrama Bogor</p>
+    <p>© 2025 Ilham Maulana | Portfolio PKL TJKT</p>
 </footer>
 
 </body>
