@@ -47,7 +47,7 @@ header p{
     opacity:0.9;
 }
 
-/* MAIN LAYOUT (Flexbox untuk Sidebar & Konten) */
+/* MAIN LAYOUT */
 .main-layout {
     max-width: 1200px;
     margin: auto;
@@ -158,7 +158,6 @@ h2{
     margin-bottom:10px;
 }
 
-/* LIST KEAHLIAN */
 .skill-box ul{
     padding-left:18px;
 }
@@ -169,7 +168,7 @@ h2{
     border: 1px solid #e2e8f0;
     padding: 20px;
     border-radius: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .project-item h4, .cert-item h4 {
@@ -180,6 +179,7 @@ h2{
 
 .project-tags {
     margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .tag {
@@ -196,7 +196,6 @@ h2{
 /* LINK BUTTON */
 .btn-link {
     display: inline-block;
-    margin-top: 12px;
     color: #2563eb;
     text-decoration: none;
     font-weight: bold;
@@ -207,7 +206,7 @@ h2{
     text-decoration: underline;
 }
 
-/* LINK */
+/* LINK CONTACT */
 .contact a{
     text-decoration:none;
     color:#2563eb;
@@ -245,10 +244,9 @@ footer{
     <p>SMK Wikrama Bogor | TJKT (Teknik Jaringan Komputer dan Telekomunikasi)</p>
 </header>
 
-<!-- MAIN LAYOUT WRAPPER -->
 <div class="main-layout">
 
-    <!-- SIDEBAR DI SEBELAH KIRI -->
+    <!-- SIDEBAR NAVIGASI -->
     <aside class="sidebar">
         <nav class="sidebar-nav">
             <h3>Navigasi</h3>
@@ -258,13 +256,13 @@ footer{
                 <li><a href="#tools">Tools & Software</a></li>
                 <li><a href="#tujuan">Tujuan PKL</a></li>
                 <li><a href="#sertifikat">Sertifikat</a></li>
-                <li><a href="#projek">Projek GitHub</a></li>
+                <li><a href="#projek">Projek</a></li>
                 <li><a href="#kontak">Kontak</a></li>
             </ul>
         </nav>
     </aside>
 
-    <!-- KONTEN PORTFOLIO DI SEBELAH KANAN -->
+    <!-- KONTEN UTAMA -->
     <div class="container">
 
         <!-- TENTANG SAYA -->
@@ -306,6 +304,7 @@ footer{
                         <li>Pembuatan kabel LAN Straight & Cross</li>
                         <li>Crimping konektor RJ45</li>
                         <li>Pengujian kabel LAN menggunakan LAN Tester</li>
+                        <li>Instalasi jaringan LAN sederhana</li>
                     </ul>
                 </div>
 
@@ -314,12 +313,13 @@ footer{
                     <ul>
                         <li>Nagios Core dasar</li>
                         <li>Monitoring server & service</li>
+                        <li>Alerting dasar</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- TOOLS -->
+        <!-- TOOLS & SOFTWARE -->
         <section id="tools" class="card">
             <h2>Tools & Software</h2>
             <div class="skills-grid">
@@ -347,32 +347,40 @@ footer{
                 </div>
             </div>
         </section>
-     
 
-        <!-- SERTIFIKAT -->
+        <!-- TUJUAN PKL -->
+        <section id="tujuan" class="card">
+            <h2>Tujuan PKL</h2>
+            <p>
+                PKL ini saya lakukan untuk menambah pengalaman kerja dan mengenal dunia industri IT.
+            </p>
+            <br>
+            <p>
+                Saya ingin meningkatkan kemampuan dan siap menghadapi dunia kerja.
+            </p>
+        </section>
+
         <!-- SERTIFIKAT -->
         <section id="sertifikat" class="card">
             <h2>Sertifikat</h2>
             <div class="cert-item">
                 <h4>Virtual Machine Fundamental — Aguna Course</h4>
-                <p>Sertifikat kelulusan kursus dasar pengelolaan mesin virtual (VM) dengan nilai ujian kelulusan memuaskan yaitu <strong>90</strong>[cite: 4].</p>
-                <span class="tag">No. Sertifikat: AC-428-85965675-S1</span>
+                <p>Sertifikat kelulusan kursus dasar pengelolaan mesin virtual (VM) dengan nilai ujian kelulusan memuaskan yaitu 90[cite: 4].</p>
+                <span class="tag" style="margin-top: 8px;">No. Sertifikat: AC-428-85965675-S1</span>
                 <br><br>
-                <!-- TOMBOL UNDUH LKPD AGUNA -->
-                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link" style="background: #3b82f6; color: white; padding: 8px 15px; border-radius: 8px; text-decoration: none; display: inline-block;">📄 Lihat Laporan LKPD-Aguna-Mesin Virtual (2).docx</a>
+                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link" style="background: #3b82f6; color: white; padding: 8px 15px; border-radius: 8px; text-decoration: none;">📄 Lihat Laporan LKPD-Aguna-Mesin Virtual (2).docx</a>
             </div>
         </section>
 
-        <!-- PROJEK GITHUB & LKPD -->
+        <!-- PROJEK & LAPORAN PRAKTIKUM (LKPD) -->
         <section id="projek" class="card">
             <h2>Projek & Laporan Praktikum (LKPD)</h2>
-            
             <p style="margin-bottom: 20px; color: #475569;">
                 Berikut adalah dokumentasi pengerjaan tugas dan laporan praktikum (LKPD) di bidang Administrasi Sistem Jaringan (ASJ) dan infrastruktur jaringan. Seluruh berkas asli tersedia pada 
                 <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" style="color: #2563eb; font-weight: bold; text-decoration: none;">Folder Google Drive Dokumentasi PKL</a>.
             </p>
 
-            <!-- PROJEK 1: SAMBA -->
+            <!-- SAMBA SERVER -->
             <div class="project-item">
                 <h4>SAMBA Server File Sharing Project</h4>
                 <p>Membangun sistem public & private/group folder sharing menggunakan SAMBA Server pada Debian 11[cite: 1]. Projek lintas jurusan (TJKT, PPLG, DKV) untuk mempermudah kolaborasi berkas tim lintas kompetensi[cite: 1].</p>
@@ -381,13 +389,10 @@ footer{
                     <span class="tag">SAMBA Server</span>
                     <span class="tag">Folder Sharing</span>
                 </div>
-                <br>
-                <a href="https://github.com/username-kamu/samba-server-sharing" target="_blank" class="btn-link" style="margin-right: 15px;">Lihat di GitHub →</a>
-                <!-- TOMBOL UNDUH LKPD SAMBA -->
-                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link" style="color: #2563eb; font-weight: 500;">📄 Buka Dokumen ilham LKPD Linux 4 - SAMBA Server.docx</a>
+                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link">📄 Buka Dokumen ilham LKPD Linux 4 - SAMBA Server.docx</a>
             </div>
 
-            <!-- PROJEK 2: DHCP -->
+            <!-- DHCP SERVER -->
             <div class="project-item">
                 <h4>DHCP Server Configuration & Reservation</h4>
                 <p>Implementasi DHCP Server menggunakan paket <code>isc-dhcp-server</code> di Linux Debian 11 serta konfigurasi IP Reservation khusus berbasis MAC Address pada Client Windows[cite: 3].</p>
@@ -396,13 +401,10 @@ footer{
                     <span class="tag">Linux Debian 11</span>
                     <span class="tag">IP Reservation</span>
                 </div>
-                <br>
-                <a href="https://github.com/username-kamu/dhcp-server-debian" target="_blank" class="btn-link" style="margin-right: 15px;">Lihat di GitHub →</a>
-                <!-- TOMBOL UNDUH LKPD DHCP -->
-                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link" style="color: #2563eb; font-weight: 500;">📄 Buka Dokumen LKPD Linux - 3.2 DHCP Server 11.docx</a>
+                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link">📄 Buka Dokumen LKPD Linux - 3.2 DHCP Server 11.docx</a>
             </div>
 
-            <!-- PROJEK 3: CISCO -->
+            <!-- CISCO MULTI NETWORK -->
             <div class="project-item">
                 <h4>Multi-Network Web Server & DNS Routing (PSAJ)</h4>
                 <p>Laporan Penilaian Sumatif Akhir Jenjang (PSAJ) berupa perancangan topologi jaringan kompleks terintegrasi Multi-Router, DNS Server, dan Web Server (smkwikrama.net & ujikom.com)[cite: 2].</p>
@@ -412,40 +414,8 @@ footer{
                     <span class="tag">Web Server</span>
                     <span class="tag">Routing</span>
                 </div>
-                <br>
-                <a href="https://github.com/username-kamu/cisco-dns-webserver" target="_blank" class="btn-link" style="margin-right: 15px;">Lihat di GitHub →</a>
-                <!-- TOMBOL UNDUH LKPD CISCO -->
-                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link" style="color: #2563eb; font-weight: 500;">📄 Buka Dokumen ilham maulana cisco PSAJ.docx</a>
+                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link">📄 Buka Dokumen ilham maulana cisco PSAJ.docx</a>
             </div>
-        </section>
-
-        <!-- PROJEK GITHUB -->
-        <section id="projek" class="card">
-            
-            <div class="project-item">
-                <h4>SAMBA Server File Sharing Project</h4>
-                <p>Membangun sistem public & private/group folder sharing menggunakan SAMBA Server pada Debian 11. Projek lintas jurusan (TJKT, PPLG, DKV) untuk mempermudah kolaborasi berkas tim.</p>
-                <div class="project-tags">
-                    <span class="tag">Debian 12</span>
-                    <span class="tag">SAMBA</span>
-                    <span class="tag">Networking</span>
-            </div>
-
-            <div class="project-item">
-                <h4>DHCP Server Configuration & Reservation</h4>
-                <p>Implementasi DHCP Server menggunakan paket isc-dhcp-server di Linux Debian 11 serta konfigurasi IP Reservation khusus berbasis MAC Address pada Client Windows.</p>
-                <div class="project-tags">
-                    <span class="tag">DHCP Server</span>
-                    <span class="tag">Linux Debian</span>
-                    <span class="tag">IP Reservation</span>
-            </div>
-
-            <div class="project-item">
-                <h4>Multi-Network Web Server & DNS Routing</h4>
-                <p>Perancangan topologi jaringan  menggunakan Cisco Packet Tracer </p>
-                <div class="project-tags">
-                    <span class="tag">Cisco Packet Tracer</span>
-                </div>
         </section>
 
         <!-- KONTAK -->
@@ -472,3 +442,4 @@ footer{
 </footer>
 
 </body>
+</html>
