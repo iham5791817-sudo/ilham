@@ -11,13 +11,15 @@
     padding:0;
     box-sizing:border-box;
     font-family:'Segoe UI',sans-serif;
-    scroll-behavior: smooth;
 }
 
 body{
     background: linear-gradient(135deg, #e0f2fe, #f8fafc);
     color:#333;
     line-height:1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* HEADER */
@@ -50,10 +52,12 @@ header p{
 /* MAIN LAYOUT */
 .main-layout {
     max-width: 1200px;
+    width: 100%;
     margin: auto;
     padding: 40px 20px;
     display: flex;
     gap: 30px;
+    flex-grow: 1;
 }
 
 /* SIDEBAR NAVIGASI */
@@ -96,12 +100,15 @@ header p{
     padding: 8px 12px;
     border-radius: 8px;
     transition: 0.3s;
+    cursor: pointer;
 }
 
-.sidebar-nav ul li a:hover {
+/* Style ketika menu navigasi diklik/aktif */
+.sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
     background: #e0f2fe;
     color: #2563eb;
     padding-left: 18px;
+    font-weight: 600;
 }
 
 /* CONTAINER KONTEN */
@@ -109,25 +116,30 @@ header p{
     flex-grow: 1;
 }
 
-/* CARD */
-.card{
+/* CARD TAB (Sembunyikan default, tampilkan lewat class .active) */
+.tab-content {
+    display: none;
     background:white;
     padding:30px;
     border-radius:18px;
-    margin-bottom:25px;
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
+    animation: fadeIn 0.5s ease;
 }
 
-.card:hover{
-    transform: translateY(-5px);
-    box-shadow:0 15px 30px rgba(0,0,0,0.12);
+.tab-content.active {
+    display: block;
+}
+
+/* Efek transisi halus saat ganti tab */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* TITLE */
 h2{
     color:#0f172a;
-    margin-bottom:15px;
+    margin-bottom:20px;
     border-left:5px solid #3b82f6;
     padding-left:10px;
 }
@@ -150,7 +162,7 @@ h2{
 
 .skill-box:hover{
     background:#e0f2fe;
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .skill-box h3{
@@ -158,8 +170,13 @@ h2{
     margin-bottom:10px;
 }
 
-.skill-box ul{
-    padding-left:18px;
+.skill-box ul {
+    padding-left: 18px;
+}
+
+.skill-box ul li {
+    margin-bottom: 6px;
+    font-size: 14px;
 }
 
 /* PROJEK & SERTIFIKAT */
@@ -210,6 +227,7 @@ h2{
 .contact a{
     text-decoration:none;
     color:#2563eb;
+    font-weight: 500;
 }
 
 footer{
@@ -217,7 +235,7 @@ footer{
     color:white;
     text-align:center;
     padding:20px;
-    margin-top:30px;
+    margin-top:auto;
 }
 
 /* RESPONSIVE */
@@ -246,24 +264,28 @@ footer{
 
 <div class="main-layout">
 
+    <!-- NAVIGASI KIRI -->
     <aside class="sidebar">
         <nav class="sidebar-nav">
             <h3>Navigasi</h3>
             <ul>
-                <li><a href="#tentang">Tentang Saya</a></li>
-                <li><a href="#keahlian">Keahlian</a></li>
-                <li><a href="#tools">Tools & Software</a></li>
-                <li><a href="#tujuan">Tujuan PKL</a></li>
-                <li><a href="#sertifikat">Sertifikat</a></li>
-                <li><a href="#projek">Projek</a></li>
-                <li><a href="#kontak">Kontak</a></li>
+                <!-- Menambahkan onclick fungsi JavaScript untuk ganti halaman -->
+                <li><a onclick="openTab(event, 'tentang')" class="tab-link active">Tentang Saya</a></li>
+                <li><a onclick="openTab(event, 'keahlian')" class="tab-link">Keahlian</a></li>
+                <li><a onclick="openTab(event, 'tools')" class="tab-link">Tools & Software</a></li>
+                <li><a onclick="openTab(event, 'tujuan')" class="tab-link">Tujuan PKL</a></li>
+                <li><a href="javascript:void(0)" onclick="openTab(event, 'sertifikat')" class="tab-link">Sertifikat</a></li>
+                <li><a onclick="openTab(event, 'projek')" class="tab-link">Projek</a></li>
+                <li><a onclick="openTab(event, 'kontak')" class="tab-link">Kontak</a></li>
             </ul>
         </nav>
     </aside>
 
+    <!-- AREA KONTEN KANAN -->
     <div class="container">
 
-        <section id="tentang" class="card">
+        <!-- TENTANG SAYA (Otomatis Aktif Pertama Kali) -->
+        <section id="tentang" class="tab-content active">
             <h2>Tentang Saya</h2>
             <p>
                 Halo, saya <strong>Ilham Maulana</strong>, siswa SMK Wikrama Bogor jurusan TJKT. Saya sedang mempersiapkan diri untuk PKL dan meningkatkan kemampuan di bidang IT.
@@ -274,7 +296,8 @@ footer{
             </p>
         </section>
 
-        <section id="keahlian" class="card">
+        <!-- KEAHLIAN -->
+        <section id="keahlian" class="tab-content">
             <h2>Keahlian</h2>
             <div class="skills-grid">
                 <div class="skill-box">
@@ -314,7 +337,8 @@ footer{
             </div>
         </section>
 
-        <section id="tools" class="card">
+        <!-- TOOLS & SOFTWARE -->
+        <section id="tools" class="tab-content">
             <h2>Tools & Software</h2>
             <div class="skills-grid">
                 <div class="skill-box">
@@ -342,7 +366,8 @@ footer{
             </div>
         </section>
 
-        <section id="tujuan" class="card">
+        <!-- TUJUAN PKL -->
+        <section id="tujuan" class="tab-content">
             <h2>Tujuan PKL</h2>
             <p>
                 PKL ini saya lakukan untuk menambah pengalaman kerja dan mengenal dunia industri IT.
@@ -353,7 +378,8 @@ footer{
             </p>
         </section>
 
-        <section id="sertifikat" class="card">
+        <!-- SERTIFIKAT -->
+        <section id="sertifikat" class="tab-content">
             <h2>Sertifikat</h2>
             <div class="cert-item">
                 <h4>Virtual Machine Fundamental — Aguna Course</h4>
@@ -364,9 +390,11 @@ footer{
             </div>
         </section>
 
-        <section id="projek" class="card">
+        <!-- PROJEK & LAPORAN PRAKTIKUM (LKPD) -->
+        <section id="projek" class="tab-content">
             <h2>Projek & Laporan Praktikum (LKPD)</h2>
             
+            <!-- SAMBA SERVER -->
             <div class="project-item">
                 <h4>SAMBA Server File Sharing Project</h4>
                 <p>Membangun sistem public & private/group folder sharing menggunakan SAMBA Server pada Debian 11. Projek lintas jurusan (TJKT, PPLG, DKV) untuk mempermudah kolaborasi berkas tim lintas kompetensi.</p>
@@ -378,6 +406,7 @@ footer{
                 <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link">📄 Buka Dokumen ilham LKPD Linux 4 - SAMBA Server.docx</a>
             </div>
 
+            <!-- DHCP SERVER -->
             <div class="project-item">
                 <h4>DHCP Server Configuration & Reservation</h4>
                 <p>Implementasi DHCP Server menggunakan paket isc-dhcp-server di Linux Debian 11 serta konfigurasi IP Reservation khusus berbasis MAC Address pada Client Windows.</p>
@@ -389,6 +418,7 @@ footer{
                 <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link">📄 Buka Dokumen LKPD Linux - 3.2 DHCP Server 11.docx</a>
             </div>
 
+            <!-- CISCO PSAJ -->
             <div class="project-item">
                 <h4>Multi-Network Web Server & DNS Routing (PSAJ)</h4>
                 <p>Laporan Penilaian Sumatif Akhir Jenjang (PSAJ) berupa perancangan topologi jaringan kompleks terintegrasi Multi-Router, DNS Server, dan Web Server (smkwikrama.net & ujikom.com).</p>
@@ -402,7 +432,8 @@ footer{
             </div>
         </section>
 
-        <section id="kontak" class="card contact">
+        <!-- KONTAK -->
+        <section id="kontak" class="tab-content">
             <h2>Kontak</h2>
             <p><strong>Email:</strong><br>
                 <a href="mailto:ilhammaulana@smkwikrama.sch.id">
@@ -411,7 +442,7 @@ footer{
             </p>
             <br>
             <p><strong>WhatsApp:</strong><br>
-                <a href="https://wa.me/6283123422774">
+                <a href="https://wa.me/6283123422774" target="_blank">
                     0831-2342-2774
                 </a>
             </p>
@@ -423,6 +454,27 @@ footer{
 <footer>
     <p>© 2026 Ilham Maulana | Portfolio PKL TJKT</p>
 </footer>
+
+<!-- SCRIPT JAVASCRIPT UNTUK TAB SYSTEM -->
+<script>
+function openTab(evt, tabId) {
+    // 1. Sembunyikan semua konten tab terlebih dahulu
+    var tabContents = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+    }
+
+    // 2. Hilangkan class 'active' dari semua tombol navigasi menu
+    var tabLinks = document.getElementsByClassName("tab-link");
+    for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].classList.remove("active");
+    }
+
+    // 3. Tampilkan tab yang sedang dipilih dan tambahkan class 'active' ke tombolnya
+    document.getElementById(tabId).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
+</script>
 
 </body>
 </html>
