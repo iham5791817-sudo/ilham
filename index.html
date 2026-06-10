@@ -10,43 +10,79 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body{
-    background: linear-gradient(135deg, #e0f2fe, #f8fafc);
-    color:#333;
+    /* Ganti background bawah menjadi tema Dark Tech / Anak IT */
+    background: linear-gradient(135deg, #090d16, #111827);
+    color:#e2e8f0;
     line-height:1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* HEADER */
+/* HEADER - TEMA CYBER DARK */
 header{
-    background:#0f172a;
+    background:#0b0f19;
     color:white;
     text-align:center;
-    padding:50px 20px;
+    padding:60px 20px;
+    border-bottom: 1px solid #1e293b;
+    position: relative;
+}
+
+/* ANIMASI SINYAL DI BELAKANG FOTO PROFIL (TJKT VIBES) */
+.profile-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px auto;
 }
 
 .profile-img{
-    width:180px;
-    height:180px;
+    width: 100%;
+    height: 100%;
     border-radius:50%;
     object-fit:cover;
-    border:5px solid white;
-    margin-bottom:20px;
+    border:4px solid #3b82f6;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-container::before, .profile-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.4);
+    z-index: 1;
+    animation: pulseSignal 3s infinite linear;
+}
+
+.profile-container::after {
+    animation-delay: 1.5s;
+}
+
+@keyframes pulseSignal {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
 }
 
 header h1{
     font-size:38px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #ffffff, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 header p{
-    font-size:18px;
+    font-size:16px;
     margin-top:10px;
-    opacity:0.9;
+    color: #94a3b8;
 }
 
 /* MAIN LAYOUT */
@@ -60,114 +96,128 @@ header p{
     flex-grow: 1;
 }
 
-/* SIDEBAR NAVIGASI */
+/* SIDEBAR NAVIGASI MENGKILAP */
 .sidebar {
     width: 250px;
     flex-shrink: 0;
 }
 
 .sidebar-nav {
-    background: white;
+    background: #111827;
     padding: 20px;
     border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border: 1px solid #1e293b;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     position: sticky;
     top: 30px;
 }
 
 .sidebar-nav h3 {
-    color: #0f172a;
+    color: #fff;
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     border-bottom: 2px solid #3b82f6;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
 }
 
 .sidebar-nav ul {
     list-style: none;
-    padding-left: 0;
 }
 
 .sidebar-nav ul li {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .sidebar-nav ul li a {
     text-decoration: none;
-    color: #475569;
+    color: #94a3b8;
     font-weight: 500;
     display: block;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: 0.3s;
+    padding: 10px 14px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-/* Style ketika menu navigasi diklik/aktif */
+/* Hover & Aktif Navigasi */
 .sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
-    background: #e0f2fe;
-    color: #2563eb;
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-left: 4px solid #3b82f6;
     padding-left: 18px;
     font-weight: 600;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
 }
 
-/* CONTAINER KONTEN */
+/* CONTAINER KONTEN UTAMA */
 .container{
     flex-grow: 1;
 }
 
-/* CARD TAB (Sembunyikan default, tampilkan lewat class .active) */
+/* ANIMASI PERPINDAHAN TAB HALUS */
 .tab-content {
     display: none;
-    background:white;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    animation: fadeIn 0.5s ease;
+    background: #111827;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .tab-content.active {
     display: block;
+    animation: tabSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Efek transisi halus saat ganti tab */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes tabSlideIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
-/* TITLE */
+/* JUDUL HALAMAN */
 h2{
-    color:#0f172a;
-    margin-bottom:20px;
+    color:#fff;
+    margin-bottom:25px;
     border-left:5px solid #3b82f6;
-    padding-left:10px;
+    padding-left:12px;
+    font-size: 24px;
 }
 
-/* GRID */
+/* GRID KEAHLIAN */
 .skills-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     gap:20px;
 }
 
-/* BOX */
+/* KOTAK SUB-KEAHLIAN */
 .skill-box{
-    background:#f1f5f9;
+    background:#1e293b;
     padding:20px;
-    border-radius:12px;
-    border:1px solid #e2e8f0;
-    transition:0.3s;
+    border-radius:14px;
+    border:1px solid #334155;
+    transition: all 0.3s ease;
 }
 
 .skill-box:hover{
-    background:#e0f2fe;
-    transform: scale(1.02);
+    background:#1e293b;
+    border-color: #3b82f6;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15);
 }
 
 .skill-box h3{
-    color:#2563eb;
-    margin-bottom:10px;
+    color:#60a5fa;
+    margin-bottom:12px;
+    font-size: 18px;
 }
 
 .skill-box ul {
@@ -175,70 +225,115 @@ h2{
 }
 
 .skill-box ul li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     font-size: 14px;
+    color: #cbd5e1;
 }
 
-/* PROJEK & SERTIFIKAT */
+/* ITEM PROJEK & SERTIFIKAT */
 .project-item, .cert-item {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 20px;
-    border-radius: 12px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 22px;
+    border-radius: 14px;
     margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.project-item:hover, .cert-item:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.1);
 }
 
 .project-item h4, .cert-item h4 {
-    color: #0f172a;
+    color: #fff;
     font-size: 18px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.project-item p, .cert-item p {
+    color: #94a3b8;
+    font-size: 14px;
 }
 
 .project-tags {
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin-top: 12px;
+    margin-bottom: 18px;
 }
 
 .tag {
     display: inline-block;
-    background: #e2e8f0;
-    color: #475569;
-    padding: 3px 10px;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    padding: 4px 12px;
     border-radius: 20px;
     font-size: 12px;
-    margin-right: 5px;
+    margin-right: 6px;
     font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
-/* LINK BUTTON */
+/* LINK BUTTON / DOKUMEN */
 .btn-link {
     display: inline-block;
-    color: #2563eb;
+    color: #3b82f6;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
+    transition: 0.2s;
 }
 
 .btn-link:hover {
+    color: #60a5fa;
     text-decoration: underline;
 }
 
-/* CONTACT LINK */
+/* DOKUMEN SERTIFIKAT */
+.btn-cert {
+    background: #3b82f6; 
+    color: white !important; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-cert:hover {
+    background: #2563eb;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    text-decoration: none !important;
+}
+
+/* KONTAK */
+.contact p {
+    font-size: 15px;
+    color: #94a3b8;
+}
+
 .contact a{
     text-decoration:none;
-    color:#2563eb;
-    font-weight: 500;
+    color:#3b82f6;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.contact a:hover {
+    color: #60a5fa;
 }
 
 footer{
-    background:#0f172a;
-    color:white;
+    background:#0b0f19;
+    color:#64748b;
     text-align:center;
-    padding:20px;
+    padding:25px;
     margin-top:auto;
+    border-top: 1px solid #1e293b;
+    font-size: 14px;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE LAYOUT UNTUK HP */
 @media (max-width: 768px) {
     .main-layout {
         flex-direction: column;
@@ -257,7 +352,10 @@ footer{
 <body>
 
 <header>
-    <img src="foto-ilham.jpg" alt="Ilham Maulana" class="profile-img">
+    <!-- Container khusus untuk efek animasi sinyal -->
+    <div class="profile-container">
+        <img src="foto-ilham.jpg" alt="Ilham Maulana" class="profile-img">
+    </div>
     <h1>Ilham Maulana</h1>
     <p>SMK Wikrama Bogor | TJKT (Teknik Jaringan Komputer dan Telekomunikasi)</p>
 </header>
@@ -269,12 +367,11 @@ footer{
         <nav class="sidebar-nav">
             <h3>Navigasi</h3>
             <ul>
-                <!-- Menambahkan onclick fungsi JavaScript untuk ganti halaman -->
                 <li><a onclick="openTab(event, 'tentang')" class="tab-link active">Tentang Saya</a></li>
                 <li><a onclick="openTab(event, 'keahlian')" class="tab-link">Keahlian</a></li>
                 <li><a onclick="openTab(event, 'tools')" class="tab-link">Tools & Software</a></li>
                 <li><a onclick="openTab(event, 'tujuan')" class="tab-link">Tujuan PKL</a></li>
-                <li><a href="javascript:void(0)" onclick="openTab(event, 'sertifikat')" class="tab-link">Sertifikat</a></li>
+                <li><a onclick="openTab(event, 'sertifikat')" class="tab-link">Sertifikat</a></li>
                 <li><a onclick="openTab(event, 'projek')" class="tab-link">Projek</a></li>
                 <li><a onclick="openTab(event, 'kontak')" class="tab-link">Kontak</a></li>
             </ul>
@@ -284,7 +381,7 @@ footer{
     <!-- AREA KONTEN KANAN -->
     <div class="container">
 
-        <!-- TENTANG SAYA (Otomatis Aktif Pertama Kali) -->
+        <!-- TENTANG SAYA -->
         <section id="tentang" class="tab-content active">
             <h2>Tentang Saya</h2>
             <p>
@@ -383,10 +480,10 @@ footer{
             <h2>Sertifikat</h2>
             <div class="cert-item">
                 <h4>Virtual Machine Fundamental — Aguna Course</h4>
-                <p>Sertifikat kelulusan kursus dasar pengelolaan mesin virtual (VM) dengan nilai ujian kelulusan memuaskan yaitu 90.</p>
-                <span class="tag" style="margin-top: 8px;">No. Sertifikat: AC-428-85965675-S1</span>
+                <p style="margin-bottom: 12px;">Sertifikat kelulusan kursus dasar pengelolaan mesin virtual (VM) dengan nilai ujian kelulusan memuaskan yaitu 90.</p>
+                <span class="tag">No. Sertifikat: AC-428-85965675-S1</span>
                 <br><br>
-                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-link" style="background: #3b82f6; color: white; padding: 8px 15px; border-radius: 8px; text-decoration: none; display: inline-block;">📄 Lihat Laporan LKPD-Aguna-Mesin Virtual (2).docx</a>
+                <a href="https://drive.google.com/drive/folders/1tEFBFGKiPE2rHftmhIEYIUe9RydFgU45?usp=drive_link" target="_blank" class="btn-cert">📄 Lihat Laporan LKPD-Aguna-Mesin Virtual (2).docx</a>
             </div>
         </section>
 
@@ -435,17 +532,13 @@ footer{
         <!-- KONTAK -->
         <section id="kontak" class="tab-content">
             <h2>Kontak</h2>
-            <p><strong>Email:</strong><br>
-                <a href="mailto:ilhammaulana@smkwikrama.sch.id">
-                    ilhammaulana@smkwikrama.sch.id
-                </a>
-            </p>
-            <br>
-            <p><strong>WhatsApp:</strong><br>
-                <a href="https://wa.me/6283123422774" target="_blank">
-                    0831-2342-2774
-                </a>
-            </p>
+            <div class="contact">
+                <p><strong>Email:</strong></p>
+                <a href="mailto:ilhammaulana@smkwikrama.sch.id">ilhammaulana@smkwikrama.sch.id</a>
+                <br><br>
+                <p><strong>WhatsApp:</strong></p>
+                <a href="https://wa.me/6283123422774" target="_blank">0831-2342-2774</a>
+            </div>
         </section>
 
     </div>
@@ -455,22 +548,19 @@ footer{
     <p>© 2026 Ilham Maulana | Portfolio PKL TJKT</p>
 </footer>
 
-<!-- SCRIPT JAVASCRIPT UNTUK TAB SYSTEM -->
+<!-- ENGINE UTAMA ANIMASI JAVASCRIPT TAB -->
 <script>
 function openTab(evt, tabId) {
-    // 1. Sembunyikan semua konten tab terlebih dahulu
     var tabContents = document.getElementsByClassName("tab-content");
     for (var i = 0; i < tabContents.length; i++) {
         tabContents[i].classList.remove("active");
     }
 
-    // 2. Hilangkan class 'active' dari semua tombol navigasi menu
     var tabLinks = document.getElementsByClassName("tab-link");
     for (var i = 0; i < tabLinks.length; i++) {
         tabLinks[i].classList.remove("active");
     }
 
-    // 3. Tampilkan tab yang sedang dipilih dan tambahkan class 'active' ke tombolnya
     document.getElementById(tabId).classList.add("active");
     evt.currentTarget.classList.add("active");
 }
