@@ -14,7 +14,6 @@
 }
 
 body{
-    /* Ganti background bawah menjadi tema Dark Tech / Anak IT */
     background: linear-gradient(135deg, #090d16, #111827);
     color:#e2e8f0;
     line-height:1.6;
@@ -23,17 +22,16 @@ body{
     flex-direction: column;
 }
 
-/* HEADER - TEMA CYBER DARK */
+/* HEADER - CYBER DARK MODE */
 header{
     background:#0b0f19;
     color:white;
     text-align:center;
-    padding:60px 20px;
+    padding:60px 20px 40px 20px;
     border-bottom: 1px solid #1e293b;
-    position: relative;
 }
 
-/* ANIMASI SINYAL DI BELAKANG FOTO PROFIL (TJKT VIBES) */
+/* ANIMASI SINYAL FOTO PROFIL */
 .profile-container {
     position: relative;
     width: 180px;
@@ -77,12 +75,33 @@ header h1{
     background: linear-gradient(to right, #ffffff, #3b82f6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
 }
 
-header p{
-    font-size:16px;
-    margin-top:10px;
-    color: #94a3b8;
+/* CONTAINER TEKS JALAN & NYALA */
+.marquee-container {
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 6px;
+    padding: 5px 0;
+}
+
+/* TULISAN JALAN & GLOWING */
+.marquee-text {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #60a5fa;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.4);
+    animation: jalanKiri 12s infinite linear;
+    padding-left: 100%;
+}
+
+@keyframes jalanKiri {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
 }
 
 /* MAIN LAYOUT */
@@ -96,7 +115,7 @@ header p{
     flex-grow: 1;
 }
 
-/* SIDEBAR NAVIGASI MENGKILAP */
+/* SIDEBAR NAVIGASI */
 .sidebar {
     width: 250px;
     flex-shrink: 0;
@@ -141,7 +160,6 @@ header p{
     cursor: pointer;
 }
 
-/* Hover & Aktif Navigasi */
 .sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
     background: rgba(59, 130, 246, 0.15);
     color: #60a5fa;
@@ -156,7 +174,7 @@ header p{
     flex-grow: 1;
 }
 
-/* ANIMASI PERPINDAHAN TAB HALUS */
+/* ANIMASI TIAP PINDAH TAB (GERAK NAIK + MEMUDAR) */
 .tab-content {
     display: none;
     background: #111827;
@@ -168,15 +186,15 @@ header p{
 
 .tab-content.active {
     display: block;
-    animation: tabSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: tabSlideUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-@keyframes tabSlideIn {
-    from { 
+@keyframes tabSlideUp {
+    0% { 
         opacity: 0; 
-        transform: translateY(20px); 
+        transform: translateY(30px); 
     }
-    to { 
+    100% { 
         opacity: 1; 
         transform: translateY(0); 
     }
@@ -273,7 +291,7 @@ h2{
     border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
-/* LINK BUTTON / DOKUMEN */
+/* LINK BUTTON */
 .btn-link {
     display: inline-block;
     color: #3b82f6;
@@ -302,7 +320,6 @@ h2{
 .btn-cert:hover {
     background: #2563eb;
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-    text-decoration: none !important;
 }
 
 /* KONTAK */
@@ -333,7 +350,7 @@ footer{
     font-size: 14px;
 }
 
-/* RESPONSIVE LAYOUT UNTUK HP */
+/* RESPONSIVE LAYOUT (UNTUK HP) */
 @media (max-width: 768px) {
     .main-layout {
         flex-direction: column;
@@ -352,12 +369,17 @@ footer{
 <body>
 
 <header>
-    <!-- Container khusus untuk efek animasi sinyal -->
     <div class="profile-container">
         <img src="foto-ilham.jpg" alt="Ilham Maulana" class="profile-img">
     </div>
     <h1>Ilham Maulana</h1>
-    <p>SMK Wikrama Bogor | TJKT (Teknik Jaringan Komputer dan Telekomunikasi)</p>
+    
+    <!-- Animasi Text Berjalan dan Menyala Neon -->
+    <div class="marquee-container">
+        <div class="marquee-text">
+            SMK Wikrama Bogor | TJKT (Teknik Jaringan Komputer dan Telekomunikasi)
+        </div>
+    </div>
 </header>
 
 <div class="main-layout">
@@ -548,7 +570,7 @@ footer{
     <p>© 2026 Ilham Maulana | Portfolio PKL TJKT</p>
 </footer>
 
-<!-- ENGINE UTAMA ANIMASI JAVASCRIPT TAB -->
+<!-- SCRIPT UNTUK SISTEM PERPINDAHAN TAB DENGAN RESET ANIMASI -->
 <script>
 function openTab(evt, tabId) {
     var tabContents = document.getElementsByClassName("tab-content");
@@ -561,7 +583,14 @@ function openTab(evt, tabId) {
         tabLinks[i].classList.remove("active");
     }
 
-    document.getElementById(tabId).classList.add("active");
+    var targetTab = document.getElementById(tabId);
+    targetTab.classList.add("active");
+    
+    // Trik agar animasi fade-up selalu berjalan ulang setiap kali tombol diklik
+    targetTab.style.animation = 'none';
+    targetTab.offsetHeight; /* memicu reflow mesin browser */
+    targetTab.style.animation = null;
+
     evt.currentTarget.classList.add("active");
 }
 </script>
